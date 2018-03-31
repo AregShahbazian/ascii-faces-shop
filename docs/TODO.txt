@@ -6,3 +6,6 @@ configure babel
     require is not in the browser, need a bundler like webpack to fix it
         https://github.com/babel/gulp-babel/issues/117 : hzoo
 
+
+configure webpack
+    P: webpack-dev server doesnt generate bundle in memory

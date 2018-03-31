@@ -5,8 +5,8 @@
   "description": "Build a grid of product items and ads",
   "main": "server/index.js",
   "scripts": {
-    "start": "babel-node node_modules/.bin/json-server server/index.js --routes server/routes.json --middlewares server/handle-delay.js server/handle-ads.js",
-    "webpack": "webpack-dev-server --progress --colors",
+    "start": "babel-node node_modules/.bin/json-server --watch server/index.js --routes server/routes.json --middlewares server/handle-delay.js server/handle-ads.js",
+    "webpack-dev": "webpack-dev-server --hot --inline --progress --colors",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

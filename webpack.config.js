@@ -1,4 +1,4 @@
-var path = require('path');
+const path = require('path');
 
 module.exports = {
     entry: {
@@ -6,7 +6,8 @@ module.exports = {
     },
     output: {
         path: __dirname,
-        filename: 'public/[name].bundle.js'
+        publicPath: '/public/',
+        filename: 'bundle.js'
     },
     devServer: {
         contentBase: "./public",

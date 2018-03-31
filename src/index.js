@@ -1,10 +1,9 @@
 import "regenerator-runtime/runtime";
 import React from "react"
 import {render} from "react-dom";
-
-import AppContainer from "./containers/AppContainer"
+import GridContainer from "./containers/GridContainer";
 
 render(
-    <AppContainer/>,
+    <GridContainer/>,
     document.getElementById('products')
 );

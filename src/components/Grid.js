@@ -7,9 +7,7 @@ let Grid = ({data, loading, error}) => (
         {data.map(row =>
             <Product
                 key={row.id}
-                price={row.price}
-                size={row.size}
-                date={row.date}/>
+                {...row}/>
         )}
         <p>{error ? "Oops.. something went wrong" : loading ? "Loading..." : ""}</p>
     </div>

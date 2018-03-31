@@ -1,9 +1,10 @@
 
+create sort select component
+
 create product component
 
 fetch random new ad after every 20 products
 
-create sort select component
 
 
 move static html from index.html to React components

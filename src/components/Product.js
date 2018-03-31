@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-let Product = ({price, size, date}) => (
+let Product = ({id, price, size, date}) => (
     <div className="product">
-        {JSON.stringify(date)}
+        <p>{`Size: ${size}, price: ${price}, date: ${date}, id: ${id}`}</p>
     </div>
 )
 

@@ -2,6 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import Grid from "../components/Grid";
 import fetchData from "../api"
+import SortSelect from "../components/SortSelect";
+
+const PRODUCT_ATTRIBUTES = {
+    id: "id",
+    price: "price",
+    size: "size",
+    date: "date"
+}
 
 class GridContainer extends React.Component {
     constructor(props) {
@@ -9,36 +17,31 @@ class GridContainer extends React.Component {
         this.state = {
             data: [],
             nextPage: 1,
+            sort: PRODUCT_ATTRIBUTES.id,
             lastAd: null,
             loading: false,
             error: undefined
         };
     }
 
-    getData = () => {
-        if (this.shouldGetData()) {
-            console.log(`Getting data from page ${this.state.nextPage}`)
+    getData = (replace = false) => {
+        console.log(`Getting data from page ${this.state.nextPage}`)
 
-            this.setState({loading: true})
+        this.setState({loading: true})
 
-            fetchData(this.state.nextPage, this.props.sort)
-                .then(
-                    (response) => {
-                        this.setState({
-                            data: this.state.data.concat(response.data),
-                            nextPage: this.state.nextPage + 1,
-                            loading: false
-                        })
-                        /* On very high resolution screens, or when user the has zoomed out, the initial data batch
-                         * might not fill the screen enough, and loading more data by scrolling won't be possible.
-                         * Getting data recursively until the screen is filled will prevent this situation */
-                        this.getData();
-                    })
-                .catch((error) => {
-                    console.error(error)
-                    this.setState({error})
-                });
-        }
+        fetchData(this.state.nextPage, this.state.sort)
+            .then(
+                (response) => {
+                    this.setState({
+                        data: replace ? response.data : this.state.data.concat(response.data),
+                        nextPage: this.state.nextPage + 1,
+                        loading: false
+                    });
+                })
+            .catch((error) => {
+                console.error(error)
+                this.setState({error})
+            });
     }
 
     shouldGetData() {
@@ -46,26 +49,39 @@ class GridContainer extends React.Component {
         return (window.innerHeight + window.scrollY) >= (document.body.offsetHeight) && !this.state.loading;
     }
 
+
+    setSort = (event) => {
+        let sort = event.target.value
+        console.log(`Sorting by ${sort}`)
+        this.setState({sort})
+        // clear daa and get new with sort
+    }
+
     render() {
-        return <Grid data={this.state.data} loading={this.state.loading} error={this.state.error}/>
+        return <div>
+            <SortSelect productAttributes={PRODUCT_ATTRIBUTES} sort={this.state.sort} handleChange={this.setSort}/>
+            <Grid data={this.state.data} loading={this.state.loading} error={this.state.error}/>
+        </div>
     }
 
     componentWillMount() {
-        this.getData()
+        this.getData(true)
+    }
+
+    onScroll = () => {
+        if (this.shouldGetData()) {
+            this.getData(false)
+        }
     }
 
     componentDidMount() {
-        window.addEventListener('scroll', this.getData, false);
+        window.addEventListener('scroll', this.onScroll, false);
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.getData, false);
+        window.removeEventListener('scroll', this.onScroll, false);
     }
 
-}
-
-GridContainer.propTypes = {
-    sort: PropTypes.string.isRequired
 }
 
 export default GridContainer

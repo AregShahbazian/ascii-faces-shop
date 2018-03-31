@@ -1,9 +1,10 @@
 
+create product component
 
+fetch random new ad after every 20 products
 
 create sort select component
 
-fetch random new ad after every 20 products
 
 move static html from index.html to React components
 
@@ -53,3 +54,5 @@ Listen to scroll-event in grid
         only fetches new data if user already has data
         only fetches new data if not already loadings
 
+    P: If first loaded batch doesnt fill the screen height, scrolling is impossible and no second batch will be loaded
+    S: fetch data recursively from response-callback, and stop when no more data necessary

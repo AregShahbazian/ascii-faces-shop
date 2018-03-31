@@ -15,33 +15,36 @@ class GridContainer extends React.Component {
         };
     }
 
-    getData() {
-        console.log(`Getting data from page ${this.state.nextPage}`)
+    getData = () => {
+        if (this.shouldGetData()) {
+            console.log(`Getting data from page ${this.state.nextPage}`)
 
-        this.setState({loading: true})
+            this.setState({loading: true})
 
-        fetchData(this.state.nextPage, this.props.sort)
-            .then(
-                (response) => {
-                    this.setState({
-                        data: this.state.data.concat(response.data),
-                        nextPage: this.state.nextPage + 1,
-                        loading: false
+            fetchData(this.state.nextPage, this.props.sort)
+                .then(
+                    (response) => {
+                        this.setState({
+                            data: this.state.data.concat(response.data),
+                            nextPage: this.state.nextPage + 1,
+                            loading: false
+                        })
+                        /* On very high resolution screens, or when user the has zoomed out, the initial data batch
+                         * might not fill the screen enough, and loading more data by scrolling won't be possible.
+                         * Getting data recursively until the screen is filled will prevent this situation */
+                        this.getData();
                     })
-                })
-            .catch((error) => {
-                this.setState({error})
-            });
+                .catch((error) => {
+                    console.error(error)
+                    this.setState({error})
+                });
+        }
     }
 
-    onScroll = () => {
-        if (
-            (window.innerHeight + window.scrollY) >= (document.body.offsetHeight) && !this.state.loading
-        ) {
-            console.log("End of page reached")
-            this.getData()
-        }
-    };
+    shouldGetData() {
+        // Check if the user is viewing the end of the page and there's currently no data loading
+        return (window.innerHeight + window.scrollY) >= (document.body.offsetHeight) && !this.state.loading;
+    }
 
     render() {
         return <Grid data={this.state.data} loading={this.state.loading} error={this.state.error}/>
@@ -52,11 +55,11 @@ class GridContainer extends React.Component {
     }
 
     componentDidMount() {
-        window.addEventListener('scroll', this.onScroll, false);
+        window.addEventListener('scroll', this.getData, false);
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.onScroll, false);
+        window.removeEventListener('scroll', this.getData, false);
     }
 
 }

@@ -6,3 +6,4 @@ node_modules/
 
 # output
 public/bundle.js
+public/bundle.js.map

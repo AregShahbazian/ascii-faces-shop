@@ -9,3 +9,9 @@ configure babel
 
 configure webpack
     P: webpack-dev server doesnt generate bundle in memory
+    S: set output.publicPath, in HTML, get the bundle from absolute path, not relative to HTML location
+
+
+Front-end and back-end server should be separated, on different servers/ports
+    run webpack-dev-server (font-end) and json-server (back-end) concurrently
+

@@ -1,3 +1,17 @@
+State handling
+    GridContainer
+        handles data, currentPage, loading and lastAd
+            because only GridContainer is concerned with those
+
+    AppContainer
+        handles sort
+        because both GridContainer and (future) sort-selector will need sort
+
+
+
+move static html from index.html to React components
+
+*** HISTORY ***
 
 configure babel
     transpiling generates code with "require"
@@ -15,3 +29,5 @@ configure webpack
 Front-end and back-end server should be separated, on different servers/ports
     run webpack-dev-server (font-end) and json-server (back-end) concurrently
 
+
+Implement grid fetching data

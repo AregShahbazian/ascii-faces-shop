@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        app: './public/index.js',
+        app: './src/index.js',
     },
     output: {
         publicPath: '/public/',

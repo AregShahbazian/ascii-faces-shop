@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-let Grid = ({data, loading, error}) => (
-    <div id="products-grid">
+let Product = ({price, size, date}) => (
+    <div className="products-grid">
         {data.map(row =>
             <p
                 key={row.id}>
@@ -13,11 +13,10 @@ let Grid = ({data, loading, error}) => (
     </div>
 )
 
-Grid.propTypes = {
-    data: PropTypes.arrayOf(
-        PropTypes.object.isRequired
-    ).isRequired,
-    loading: PropTypes.bool.isRequired
+Product.propTypes = {
+    price: PropTypes.number.isRequired,
+    size: PropTypes.number.isRequired,
+    date: PropTypes.instanceOf(Date)
 }
 
-export default Grid
+export default Product

@@ -16,8 +16,8 @@ class AppContainer extends React.Component {
         };
     }
 
-    setSort(sort) {
-        this.setState({sort}).bind(this)
+    setSort = (sort) => {
+        this.setState({sort})
     }
 
     render() {

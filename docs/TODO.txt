@@ -1,13 +1,9 @@
-State handling
-    GridContainer
-        handles data, currentPage, loading and lastAd
-            because only GridContainer is concerned with those
-
-    AppContainer
-        handles sort
-        because both GridContainer and (future) sort-selector will need sort
 
 
+
+create sort select component
+
+fetch random new ad after every 20 products
 
 move static html from index.html to React components
 
@@ -31,3 +27,29 @@ Front-end and back-end server should be separated, on different servers/ports
 
 
 Implement grid fetching data
+
+State handling
+    GridContainer
+        handles data, currentPage, loading and lastAd
+            because only GridContainer is concerned with those
+
+    AppContainer
+        handles sort
+        because both GridContainer and (future) sort-selector will need sort
+
+
+
+Listen to scroll-event in grid
+    React handling events
+        https://reactjs.org/docs/handling-events.html
+        doesnt say anything about scrolling
+
+    Infinite scroll example
+        https://www.robinwieruch.de/react-infinite-scroll/
+        uses addEventListener
+        uses window.innerHeight, window.scrollY and document.body.offsetHeight to decide when to load new data
+                https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight
+        only fetches new data when user has reached end of the page
+        only fetches new data if user already has data
+        only fetches new data if not already loadings
+

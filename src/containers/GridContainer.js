@@ -15,45 +15,52 @@ class GridContainer extends React.Component {
         super(props);
         this.state = {
             data: [],
+            dataCached: [],
+            loading: false,
             nextPage: 1,
             sort: PRODUCT_ATTRIBUTES.id,
             lastAd: null,
-            loading: false,
             error: undefined
         };
     }
 
     getData = () => {
-        if (this.shouldGetData()) {
-            console.info(`we have ${this.state.data.length} rows now`)
-            console.log(`Getting data from page ${this.state.nextPage} sorted by ${this.state.sort}`);
-
-            this.setState({loading: true})
-
-            fetchData(this.state.nextPage, this.state.sort)
-                .then(
-                    (response) => {
-                        this.setState({
-                            data: this.state.data.concat(response.data),
-                            nextPage: response.data.length ? this.state.nextPage + 1 : undefined,
-                            loading: false
-                        });
-                        /* On very high resolution screens, or when user the has zoomed out, the initial data batch
-                         * might not fill the screen enough, and loading more data by scrolling won't be possible.
-                         * Getting data recursively until the screen is filled will prevent this situation */
-                        this.getData()
-                    })
-                .catch((error) => {
-                    console.error(error);
-                    this.setState({error});
-                });
-
+        // Check if the user is viewing the end of the page and there's currently no data loading
+        if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight)
+            && !this.state.loading
+            && this.state.nextPage) {
+            this.setState(
+                {loading: true},
+                this.displayCachedData)
         }
     }
 
-    shouldGetData() {
-        // Check if the user is viewing the end of the page and there's currently no data loading
-        return (window.innerHeight + window.scrollY) >= (document.body.offsetHeight) && !this.state.loading && this.state.nextPage;
+    displayCachedData = () => {
+        console.log(`Loading ${this.state.dataCached.length} cached data-rows into grid`);
+
+        this.setState({
+            data: this.state.data.concat(this.state.dataCached),
+            dataCached: []
+        }, this.cacheNewData);
+    }
+
+    cacheNewData = () => {
+        console.log(`Caching data from page ${this.state.nextPage} sorted by ${this.state.sort}`);
+
+        fetchData(this.state.nextPage, this.state.sort)
+            .then(
+                (response) => {
+                    this.setState({
+                            dataCached: response.data,
+                            loading: false,
+                            nextPage: response.data.length ? this.state.nextPage + 1 : undefined
+                        },
+                        this.getData);
+                })
+            .catch((error) => {
+                console.error(error);
+                this.setState({error});
+            });
     }
 
     setSort = (event) => {
@@ -62,6 +69,7 @@ class GridContainer extends React.Component {
         this.setState(
             {
                 data: [],
+                dataCached: [],
                 nextPage: 1,
                 sort
             },

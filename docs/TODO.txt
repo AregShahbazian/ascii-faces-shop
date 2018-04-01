@@ -1,5 +1,5 @@
 
-create sort select component
+implement cache fetching
 
 create product component
 
@@ -57,3 +57,6 @@ Listen to scroll-event in grid
 
     P: If first loaded batch doesnt fill the screen height, scrolling is impossible and no second batch will be loaded
     S: fetch data recursively from response-callback, and stop when no more data necessary
+
+
+create sort select component

@@ -1,5 +1,8 @@
 
 Configure redux + redux-saga
+    write sorting saga chain
+
+Use routines
 
 fetch random new ad after every 20 products
 

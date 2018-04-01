@@ -1,6 +1,6 @@
 import {combineReducers} from "redux";
 import {handleActions} from "redux-actions";
-import {LOAD_DATA} from "../actions/index"
+import update from "immutability-helper"
 
 const DEFAULT_STATE = {
     data: [],
@@ -12,11 +12,24 @@ const DEFAULT_STATE = {
 }
 
 export const products = handleActions({
-    "LOAD_DATA": (state, action) => {
-        console.info(action)
-        return state
+    SET_LOADING: (state, action) => {
+        return {...state, loading: action.payload}
     },
-
+    GET_DATA_FROM_CACHE: (state, action) => {
+        return update(state, {data: {$set: state.data.concat(action.payload)}})
+    },
+    CACHE_DATA: (state, action) => {
+        return update(state, {dataCached: {$set: action.payload}})
+    },
+    SET_NEXT_PAGE: (state, action) => {
+        return update(state, {nextPage: {$set: action.payload}})
+    },
+    SET_SORT: (state, action) => {
+        return update(state, {sort: {$set: action.payload}})
+    },
+    SET_ERROR: (state, action) => {
+        return {...state, error: action.payload}
+    }
 }, DEFAULT_STATE)
 
 export default combineReducers({

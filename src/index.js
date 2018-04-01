@@ -6,8 +6,9 @@ import createSagaMiddleware from "redux-saga";
 import {Provider} from "react-redux";
 import reducer from "./reducers/index"
 import rootSaga from "./saga/index"
-import GridContainer from "./containers/GridContainer";
 import Header from "./components/Header";
+import SortSelectContainer from "./containers/SortSelectContainer";
+import GridContainer from "./containers/GridContainer";
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -23,6 +24,7 @@ render(
     <Provider store={store}>
         <div>
             <Header/>
+            <SortSelectContainer/>
             <GridContainer/>
         </div>
     </Provider>,

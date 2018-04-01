@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Product from "./Product";
 
-let Grid = ({data, loading, error, nextPage}) => (
+let Grid = ({data, loading, nextPage, error}) => (
     <div id="products-grid">
         {data.map(row =>
             <Product
@@ -21,7 +21,8 @@ Grid.propTypes = {
         PropTypes.object.isRequired
     ).isRequired,
     loading: PropTypes.bool.isRequired,
-    nextPage: PropTypes.number
+    nextPage: PropTypes.number,
+    error: PropTypes.object
 }
 
 export default Grid

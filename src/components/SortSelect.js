@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 let SortSelect = ({productAttributes, sort, handleChange}) => (
-    <div className="product">
+    <div id="sort-select">
         Sort items by:
         <select onChange={handleChange}>
             <option value={productAttributes.id}>Id</option>

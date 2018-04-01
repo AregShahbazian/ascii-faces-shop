@@ -1,12 +1,11 @@
 
-
-create product component
+move static html from index.html to React components
 
 fetch random new ad after every 20 products
 
 
+create product component
 
-move static html from index.html to React components
 
 *** HISTORY ***
 

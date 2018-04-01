@@ -19,7 +19,6 @@ class GridContainer extends React.Component {
             loading: false,
             nextPage: 1,
             sort: PRODUCT_ATTRIBUTES.id,
-            lastAd: null,
             error: undefined
         };
     }

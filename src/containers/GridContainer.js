@@ -25,10 +25,14 @@ class GridContainer extends React.Component {
     }
 
     getData = () => {
-        // Check if the user is viewing the end of the page and there's currently no data loading
+        /*
+        * Check that:
+        * - the user is viewing the end of the page
+        * - there's currently no data being fetched
+        * - the last fetch didn't result in an empty list (end of data)
+        * */
         if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight)
-            && !this.state.loading
-            && this.state.nextPage) {
+            && !this.state.loading && this.state.nextPage) {
             this.setState(
                 {loading: true},
                 this.displayCachedData)
@@ -55,6 +59,9 @@ class GridContainer extends React.Component {
                             loading: false,
                             nextPage: response.data.length ? this.state.nextPage + 1 : undefined
                         },
+                        /* On very high resolution screens, or when user the has zoomed out, the initial data batch
+                         * might not fill the screen enough, and loading more data by scrolling won't be possible.
+                         * Getting more data recursively until the screen is filled will prevent this situation */
                         this.getData);
                 })
             .catch((error) => {
@@ -78,9 +85,16 @@ class GridContainer extends React.Component {
 
     render() {
         return <div>
-            <SortSelect productAttributes={PRODUCT_ATTRIBUTES} sort={this.state.sort} handleChange={this.setSort}/>
-            <Grid data={this.state.data} loading={this.state.loading} error={this.state.error}
-                  nextPage={this.state.nextPage}/>
+            <SortSelect
+                productAttributes={PRODUCT_ATTRIBUTES}
+                sort={this.state.sort}
+                handleChange={this.setSort}/>
+
+            <Grid
+                data={this.state.data}
+                loading={this.state.loading}
+                error={this.state.error}
+                nextPage={this.state.nextPage}/>
         </div>
     }
 

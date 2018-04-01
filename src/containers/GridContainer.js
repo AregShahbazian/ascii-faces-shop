@@ -1,7 +1,9 @@
 import React from "react";
+import {connect} from "react-redux";
 import Grid from "../components/Grid";
 import fetchData from "../api"
 import SortSelect from "../components/SortSelect";
+import {LOAD_DATA} from "../actions/index"
 
 const PRODUCT_ATTRIBUTES = {
     id: "id",
@@ -9,6 +11,16 @@ const PRODUCT_ATTRIBUTES = {
     size: "size",
     date: "date"
 }
+
+
+const mapStateToProps = (state) => ({
+    nextPage1: state.products.nextPage,
+    sort1: state.products.sort
+})
+
+const mapDispatchToProps = ({
+    loadData: LOAD_DATA
+})
 
 class GridContainer extends React.Component {
     constructor(props) {
@@ -35,7 +47,11 @@ class GridContainer extends React.Component {
             this.setState(
                 {loading: true},
                 this.displayCachedData)
+
+            this.props.loadData({page: this.props.nextPage1, sort: this.props.sort1})
+
         }
+
     }
 
     displayCachedData = () => {
@@ -110,4 +126,7 @@ class GridContainer extends React.Component {
     }
 }
 
-export default GridContainer
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(GridContainer)

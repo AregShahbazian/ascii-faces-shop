@@ -1,8 +1,7 @@
 
-move static html from index.html to React components
+Configure redux + redux-saga
 
 fetch random new ad after every 20 products
-
 
 create product component
 
@@ -60,3 +59,6 @@ Listen to scroll-event in grid
 create sort select component
 
 implement cache fetching
+
+move static html from index.html to React components
+

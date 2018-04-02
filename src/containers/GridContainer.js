@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import Grid from "../components/Grid";
-import {getData, getDataRoutine} from "../actions/index"
+import {getDataRoutine} from "../actions/index"
 
 const mapStateToProps = (state) => ({
     data: state.products.data,

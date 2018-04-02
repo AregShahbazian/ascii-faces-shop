@@ -1,6 +1,7 @@
 
-Configure redux + redux-saga
-    write sorting saga chain
+GET_DATA saga should be cancelled when a set-sort saga starts
+
+
 
 Use routines
 
@@ -64,4 +65,7 @@ create sort select component
 implement cache fetching
 
 move static html from index.html to React components
+
+Configure redux + redux-saga
+    write sorting saga chain
 

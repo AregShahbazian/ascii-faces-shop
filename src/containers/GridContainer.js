@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import Grid from "../components/Grid";
-import {getData} from "../actions/index"
+import {getData, getDataRoutine} from "../actions/index"
 
 const mapStateToProps = (state) => ({
     data: state.products.data,
@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = ({
-    getData
+    getData: getDataRoutine.trigger
 })
 
 class GridContainer extends React.Component {
@@ -23,17 +23,25 @@ class GridContainer extends React.Component {
             error={this.props.error}/>
     }
 
+    triggerGetData = () => {
+        this.props.getData({
+            needData:
+            (window.innerHeight + window.scrollY) >= (document.body.offsetHeight)
+            && !this.props.loading
+            && this.props.nextPage
+        })
+    }
 
     componentWillMount() {
-        this.props.getData()
+        this.triggerGetData()
     }
 
     componentDidMount() {
-        window.addEventListener('scroll', this.props.getData, false);
+        window.addEventListener('scroll', this.triggerGetData, false);
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.props.getData, false);
+        window.removeEventListener('scroll', this.triggerGetData, false);
     }
 }
 

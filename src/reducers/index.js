@@ -1,6 +1,7 @@
 import {combineReducers} from "redux";
 import {handleActions} from "redux-actions";
 import update from "immutability-helper"
+import {getDataRoutine} from "../actions/index"
 
 const DEFAULT_STATE = {
     data: [],
@@ -12,6 +13,32 @@ const DEFAULT_STATE = {
 }
 
 export const products = handleActions({
+    [getDataRoutine.REQUEST]
+        (state, action) {
+        return update(state, {
+            loading: {$set: true},
+            data: {$push: action.payload}
+        });
+    },
+    [getDataRoutine.SUCCESS]
+        (state, action) {
+        return update(state, {
+            dataCached: {$set: action.payload},
+            nextPage: {$set: action.payload.length ? state.nextPage + 1 : undefined}
+        });
+    },
+    [getDataRoutine.FAILURE]
+        (state, action) {
+        return update(state, {
+            error: {$set: action.payload},
+        });
+    },
+    [getDataRoutine.FULFILL]
+        (state, action) {
+        return update(state, {
+            loading: {$set: false},
+        });
+    },
     SET_LOADING: (state, action) => {
         return {...state, loading: action.payload}
     },

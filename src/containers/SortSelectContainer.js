@@ -18,8 +18,6 @@ class SortSelectContainer extends React.Component {
         console.log(`Sorting by ${sort}...`);
         this.props.changeSort(sort)
 
-        console.info(this.props.sort)
-
 /*        this.setState(
             {
                 data: [],

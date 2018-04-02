@@ -1,4 +1,5 @@
 import {createAction} from "redux-actions"
+import {createRoutine} from "redux-saga-routines"
 
 const GET_DATA = "GET_DATA"
 const SET_LOADING = "SET_LOADING"
@@ -22,3 +23,5 @@ export const setSort = createAction(SET_SORT)
 
 export const setError = createAction(SET_ERROR)
 
+
+export const getDataRoutine = createRoutine(GET_DATA)

@@ -30,6 +30,7 @@
     "redux": "^3.7.2",
     "redux-actions": "^2.3.0",
     "redux-saga": "^0.16.0",
+    "redux-saga-routines": "^2.2.2",
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.2"
   },

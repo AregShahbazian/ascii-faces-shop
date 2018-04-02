@@ -1,14 +1,9 @@
 
-GET_DATA saga should be cancelled when a set-sort saga starts
-
-
-
-Use routines
-
 fetch random new ad after every 20 products
 
 create product component
 
+make loading-message animated
 
 *** HISTORY ***
 
@@ -69,3 +64,6 @@ move static html from index.html to React components
 Configure redux + redux-saga
     write sorting saga chain
 
+Use routines
+
+GET_DATA saga should be cancelled when a set-sort saga starts

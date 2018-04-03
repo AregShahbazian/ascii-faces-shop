@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styles from "./SortSelect.css"
 
 let SortSelect = ({handleChange}) => (
-    <div id="sort-select">
-        Sort items by:
+    <div className={styles.sortSelect}>
+        Sort items by
         <select onChange={handleChange}>
-            <option value="id">Id</option>
+            <option value="id">ID</option>
             <option value="size">Size</option>
             <option value="price">Price</option>
         </select>

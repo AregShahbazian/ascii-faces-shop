@@ -1,10 +1,4 @@
 
-Format date
-
-Style sort-select
-
-fill page at initial render
-
 make loading-message animated
 
 *** HISTORY ***
@@ -80,3 +74,6 @@ create product component
             https://css-tricks.com/snippets/css/a-guide-to-flexbox/
         Center faces
 
+Format date
+
+Style sort-select

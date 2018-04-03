@@ -6,6 +6,10 @@
     padding: 0.7em 1.5em;
 }
 
+.product:hover {
+    border: solid black 2px;
+}
+
 .face {
     display: table;
     margin: 1em auto 1.5em auto;
@@ -13,11 +17,11 @@
 
 .price {
     margin-left: -0.5em;
-    font-family: Gill Sans Extrabold, sans-serif;
+    font-family: Rockwell Extra Bold, Rockwell Bold, monospace;
     font-weight: bold;
 }
 
 .date {
     margin-left: -0.5em;
-    font-family: "Universalis ADF Cd Std", sans-serif;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
 }

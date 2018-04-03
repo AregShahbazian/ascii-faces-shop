@@ -12,18 +12,8 @@ const mapDispatchToProps = ({
 })
 
 class SortSelectContainer extends React.Component {
-
     changeSort = (event) => {
         this.props.setSort({sort: event.target.value})
-
-        /*        this.setState(
-                    {
-                        data: [],
-                        dataCached: [],
-                        nextPage: 1,
-                        sort
-                    });*/
-
     }
 
     render() {

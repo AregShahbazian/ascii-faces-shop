@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Product from "./Product";
+import AdContainer from "../containers/AdContainer";
 
 const WAIT_FOR_AD = 20;
 const timeForAd = (a) => (a % (WAIT_FOR_AD + 1) !== 0)
@@ -14,7 +15,7 @@ let Grid = ({data, loading, nextPage, error}) => {
                 <Product
                     key={row.id}
                     {...row}/> :
-                <div key={a}>ad</div>
+                <AdContainer key={a}/>
         })}
         <p>{
             error ? "Oops.. something went wrong" :

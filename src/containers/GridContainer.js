@@ -15,14 +15,6 @@ const mapDispatchToProps = ({
 })
 
 class GridContainer extends React.Component {
-    render() {
-        return <Grid
-            data={this.props.data}
-            loading={this.props.loading}
-            nextPage={this.props.nextPage}
-            error={this.props.error}/>
-    }
-
     triggerGetData = () => {
         this.props.getData({
             needData:
@@ -30,6 +22,14 @@ class GridContainer extends React.Component {
             && !this.props.loading
             && this.props.nextPage
         })
+    }
+
+    render() {
+        return <Grid
+            data={this.props.data}
+            loading={this.props.loading}
+            nextPage={this.props.nextPage}
+            error={this.props.error}/>
     }
 
     componentWillMount() {

@@ -1,7 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-let Ad = () => (
-    <img className="ad" src={`http://localhost:3000/ads/?r=${Math.floor(Math.random() * 1000)}`}/>
+let Ad = ({adNo}) => (
+    <img className="ad" src={`http://localhost:3000/ads/?r=${adNo}`}/>
 )
+
+Ad.propTypes = {
+    adNo: PropTypes.number.isRequired
+}
 
 export default Ad

@@ -1,7 +1,7 @@
 import {combineReducers} from "redux";
 import {handleActions} from "redux-actions";
 import update from "immutability-helper"
-import {getDataRoutine, setSortRoutine} from "../actions/index"
+import {getDataRoutine, setLastAdNo, setSortRoutine} from "../actions/index"
 
 export const products = handleActions({
     /* GET_DATA routine reducers */
@@ -40,6 +40,13 @@ export const products = handleActions({
             nextPage: {$set: 1},
             sort: {$set: action.payload.sort}
         });
+    },
+    /* SET_LAST_AD action reducers */
+    [setLastAdNo]
+        (state, action) {
+        return update(state, {
+            lastAdNo: {$set: action.payload.lastAdNo}
+        });
     }
 }, {
     data: [],
@@ -47,6 +54,7 @@ export const products = handleActions({
     loading: false,
     nextPage: 1,
     sort: "id",
+    lastAdNo: undefined,
     error: undefined
 })
 

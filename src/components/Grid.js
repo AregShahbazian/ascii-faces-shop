@@ -10,14 +10,16 @@ const timeForAd = (a) => (a % (WAIT_FOR_AD + 1) !== 0)
 let Grid = ({data, loading, nextPage, error}) => {
     let a = 1;
 
-    return <div className={styles.productGrid}>
-        {data.map(row => {
-            return timeForAd(a++) ?
-                <Product
-                    key={row.id}
-                    {...row}/> :
-                <AdContainer key={a}/>
-        })}
+    return <div>
+        <div className={styles.productGrid}>
+            {data.map(row => {
+                return timeForAd(a++) ?
+                    <Product
+                        key={row.id}
+                        {...row}/> :
+                    <AdContainer key={a}/>
+            })}
+        </div>
         <p>{
             error ? "Oops.. something went wrong" :
                 loading ? "Loading..." :

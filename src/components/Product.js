@@ -5,11 +5,13 @@ import styles from "./Product.css"
 let Product = ({id, face, price, size, date}) => {
     let dateFormatted = "3 days ago"
 
-    return <span className={styles.product}>
+    return <div className={styles.product}>
         <div className={styles.face} style={{fontSize: size}}>{face}</div>
-        <div className={styles.price}>${price}</div>
-        <div className={styles.date}>{dateFormatted}</div>
-    </span>
+        <div>
+            <div className={styles.price}>${price}</div>
+            <div className={styles.date}>{dateFormatted}</div>
+        </div>
+    </div>
 }
 
 Product.propTypes = {

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Product from "./Product";
 import AdContainer from "../containers/AdContainer";
+import styles from "./Grid.css"
 
 const WAIT_FOR_AD = 20;
 const timeForAd = (a) => (a % (WAIT_FOR_AD + 1) !== 0)
@@ -9,7 +10,7 @@ const timeForAd = (a) => (a % (WAIT_FOR_AD + 1) !== 0)
 let Grid = ({data, loading, nextPage, error}) => {
     let a = 1;
 
-    return <div id="products-grid">
+    return <div className={styles.productGrid}>
         {data.map(row => {
             return timeForAd(a++) ?
                 <Product

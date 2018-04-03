@@ -21,8 +21,16 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                include: /node_modules/,
-                loaders: ['style-loader', 'css-loader'],
+                exclude: /node_modules/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                        },
+                    },
+                ],
             },
             {
                 test: /\.less$/,

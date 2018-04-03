@@ -1,5 +1,11 @@
 
 create product component
+    styles
+        how to: https://github.com/react-boilerplate/react-boilerplate/blob/dev/docs/css/README.md#next-generation-css
+        Using CSS Modules
+        Style Grid using CSS Flexbox
+            https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+        *Center faces
 
 make loading-message animated
 

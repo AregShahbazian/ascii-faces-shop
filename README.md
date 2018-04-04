@@ -25,7 +25,7 @@ It's also possible to choose the ordering of the products (in ascending order).
 
 ### Stack
 
-The app uses the ReactJS framework, and is written in JSX and ES6 syntax. Babel is used to transpile the ES6 code, and Webpack 
+The app uses the ReactJS framework, and is written with JSX and ES6 syntax. Babel is used to transpile the ES6 code, and Webpack 
 bundles the code together and prepares it for the browser.
 
 The React state is handled using Redux. Asynchronous processes are implemented with `redux-saga`, using some convenience 

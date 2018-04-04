@@ -5,7 +5,7 @@ This is an ecommerce site, where you can buy all sorts of ascii faces like `(ノ
 
 ### Installation
 
-- $ npm istall
+- $ npm install
 
 ### Running the app
 

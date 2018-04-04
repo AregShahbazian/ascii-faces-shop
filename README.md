@@ -12,7 +12,7 @@ This is an ecommerce site, where you can buy all sorts of ascii faces like `(ノ
 Start with 
 - $ npm start
 
-This will start the app, by defailt on `http://localhost:8080`.It will also start the api-server using json-server, by default on `http://localhost:3000` 
+This will start the app using `webpack-dev-server`, by default on `http://localhost:8080`.It will also start the REST-API server using `json-server`, by default on `http://localhost:3000` 
 
 ### Features
 

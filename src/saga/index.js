@@ -8,6 +8,7 @@ function* getDataSaga(action) {
         /* Using routines seems a bit overkill here, but it's still more concise than having a "change-sort" action to
        * trigger the saga and a "set-sort" action for the reducer to change the sort in the state
        */
+        console.info(`Sorting by ${action.payload.sort}`)
         yield put(setSortRoutine.success({
             sort: action.payload.sort
         }))

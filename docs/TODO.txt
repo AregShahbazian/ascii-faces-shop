@@ -1,5 +1,4 @@
 
-make loading-message animated
 
 *** HISTORY ***
 
@@ -77,3 +76,6 @@ create product component
 Format date
 
 Style sort-select
+
+make loading-message animated
+

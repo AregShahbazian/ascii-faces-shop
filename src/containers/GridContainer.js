@@ -17,10 +17,7 @@ const mapDispatchToProps = ({
 class GridContainer extends React.Component {
     triggerGetData = () => {
         this.props.getData({
-            needData:
-            (window.innerHeight + window.scrollY) >= (document.body.offsetHeight)
-            && !this.props.loading
-            && this.props.nextPage
+            needData: (window.innerHeight + window.scrollY) >= (document.body.offsetHeight) && !this.props.loading && this.props.nextPage
         })
     };
 

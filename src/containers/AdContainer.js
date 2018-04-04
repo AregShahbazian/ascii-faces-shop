@@ -1,15 +1,15 @@
 import React from "react";
 import {connect} from "react-redux";
 import Ad from "../components/Ad";
-import {setLastAdNo} from "../actions/index"
+import {setLastAdNo} from "../actions/index";
 
 const mapStateToProps = (state) => ({
     lastAdNo: state.products.lastAdNo
-})
+});
 
 const mapDispatchToProps = ({
     setLastAdNo
-})
+});
 
 class AdContainer extends React.Component {
     /* Although the ad-number is generated randomly and is never the same twice in a row, different numbers sometimes
@@ -20,7 +20,7 @@ class AdContainer extends React.Component {
         do {
             adNo = Math.floor(Math.random() * 1000);
         } while (adNo === lastAdNo)
-        console.log(`Generated new ad number: ${adNo}, which is not the last number ${lastAdNo}`)
+        console.log(`Generated new ad number: ${adNo}, which is not the last number ${lastAdNo}`);
         return adNo
     }
 
@@ -29,8 +29,8 @@ class AdContainer extends React.Component {
     }
 
     componentWillMount() {
-        this.adNo = AdContainer.newAdNo(this.props.lastAdNo)
-        this.props.setLastAdNo({lastAdNo: this.adNo})
+        this.adNo = AdContainer.newAdNo(this.props.lastAdNo);
+        this.props.setLastAdNo({lastAdNo: this.adNo});
     }
 }
 

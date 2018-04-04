@@ -1,6 +1,6 @@
 import React from "react";
 import AdContainer from "../containers/AdContainer";
-import styles from "./Header.css"
+import styles from "./style/Header.css";
 
 let Header = () => (
     <header className={styles.header}>
@@ -10,6 +10,6 @@ let Header = () => (
         <p>But first, a word from our sponsors:</p>
         <AdContainer/>
     </header>
-)
+);
 
 export default Header

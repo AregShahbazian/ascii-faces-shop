@@ -1,18 +1,18 @@
 import React from "react";
 import {connect} from "react-redux";
 import Grid from "../components/Grid";
-import {getDataRoutine} from "../actions/index"
+import {getDataRoutine} from "../actions/index";
 
 const mapStateToProps = (state) => ({
     data: state.products.data,
     loading: state.products.loading,
     nextPage: state.products.nextPage,
     error: state.products.error
-})
+});
 
 const mapDispatchToProps = ({
     getData: getDataRoutine.trigger
-})
+});
 
 class GridContainer extends React.Component {
     triggerGetData = () => {
@@ -22,7 +22,7 @@ class GridContainer extends React.Component {
             && !this.props.loading
             && this.props.nextPage
         })
-    }
+    };
 
     render() {
         return <Grid

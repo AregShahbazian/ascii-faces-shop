@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styles from "./Product.css"
+import styles from "./style/Product.css";
 
-const centsToDollarSting = (price) => (price / 100).toLocaleString("en-US", {style: "currency", currency: "USD"})
+const centsToDollarSting = (price) => (price / 100).toLocaleString("en-US", {style: "currency", currency: "USD"});
 
 const displayDate = (date) => {
     const millisInADay = 1000 * 60 * 60 * 24;
@@ -15,7 +15,7 @@ const displayDate = (date) => {
     } else {
         return date.toDateString()
     }
-}
+};
 
 let Product = ({face, price, size, date}) => {
     return <div className={styles.product}>
@@ -25,13 +25,13 @@ let Product = ({face, price, size, date}) => {
             <div className={styles.date}>{displayDate(new Date(date))}</div>
         </div>
     </div>
-}
+};
 
 Product.propTypes = {
     face: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     size: PropTypes.number.isRequired,
     date: PropTypes.string.isRequired
-}
+};
 
 export default Product

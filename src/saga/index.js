@@ -1,7 +1,7 @@
 import {all, call, fork, put, select, take, takeEvery, takeLatest} from "redux-saga/effects";
-import {fetchData} from "../api"
-import {getDataRoutine, setSortRoutine} from "../actions/index"
-import {getCachedData, getNextPage, getSort} from "../reducers/selectors"
+import {fetchData} from "../api";
+import {getDataRoutine, setSortRoutine} from "../actions/index";
+import {getCachedData, getNextPage, getSort} from "../reducers/selectors";
 
 function* getDataSaga(action) {
     if (action.type === setSortRoutine.TRIGGER) {
@@ -29,6 +29,7 @@ function* getDataSaga(action) {
             yield put(getDataRoutine.success({data: response.data}))
         }
         else {
+            console.error(error)
             yield put(getDataRoutine.failure({error}))
         }
 

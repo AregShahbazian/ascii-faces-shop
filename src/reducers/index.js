@@ -9,7 +9,8 @@ export const products = handleActions({
         (state, action) {
         return update(state, {
             loading: {$set: true},
-            data: {$push: action.payload.cachedData}
+            data: {$push: action.payload.cachedData},
+            dataCached: {$set: []}
         });
     },
     [getDataRoutine.SUCCESS]

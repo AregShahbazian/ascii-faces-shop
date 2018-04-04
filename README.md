@@ -17,17 +17,17 @@ It will also start the api-server using json-server, by default on `http://local
 
 ### Features
 
-The homepage displays an initial load of products. Instead of a aligned grid, I chose to use a flex-layout. This 
+The homepage displays an initial load of products. Instead of a aligned grid, a flex-layout is used. This 
 accentuates more the differences between the sizes of the ascii faces.
 
-Scrolling down will load more products, 40 at a time. After displaying every 20 products, and ad is inserted, making 
+Scrolling down will load more products, 30 at a time. After displaying every 20 products, and ad is inserted, making 
 sure that the same ad is never displayed twice in a row.
 
-It's also possible to choose the ordering of the products in ascending order.
+It's also possible to choose the ordering of the products (in ascending order).
 
 ### Stack
 
-The app uses the ReactJS framework, written in JSX and ES6 syntax. Babel is used to transpile the ES6 code, and Webpack 
+The app uses the ReactJS framework, and is written in JSX and ES6 syntax. Babel is used to transpile the ES6 code, and Webpack 
 bundles the code together and prepares it for the browser.
 
 The React state is handled using Redux. Asynchronous processes are implemented with `redux-saga`, using some convenience 

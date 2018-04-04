@@ -32,3 +32,4 @@ bundles the code together and prepares it for the browser.
 The React state is handled using Redux. Asynchronous processes are implemented with `redux-saga`, using some convenience 
 libraries as `redux-saga-routines` and `redux-actions`. Handling API calls is done using the `axios` library, and to 
 ensure state-immutability, the `immutability-helper` library is used by the reducers to change the state.
+
